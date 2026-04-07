@@ -55,20 +55,37 @@ long <- long |>
   )))
 
 panel_colors <- c(
-  "Opponent Respect\nDemonisation of political rivals"                        = "#c0392b",
-  "Political Pluralism\nCommitment to elections & civil liberties"            = "#2471a3",
-  "Minority Rights\nMajority override of minority rights"                    = "#27ae60",
-  "Rejection of Violence\nDiscourages political violence"                    = "#d4880e"
+  "Opponent Respect\nDemonisation of political rivals"                        = "#111111",
+  "Political Pluralism\nCommitment to elections & civil liberties"            = "#555555",
+  "Minority Rights\nMajority override of minority rights"                    = "#888888",
+  "Rejection of Violence\nDiscourages political violence"                    = "#bbbbbb"
+)
+
+panel_linetypes <- c(
+  "Opponent Respect\nDemonisation of political rivals"                        = "solid",
+  "Political Pluralism\nCommitment to elections & civil liberties"            = "dashed",
+  "Minority Rights\nMajority override of minority rights"                    = "dotdash",
+  "Rejection of Violence\nDiscourages political violence"                    = "dotted"
+)
+
+panel_shapes <- c(
+  "Opponent Respect\nDemonisation of political rivals"                        = 16,
+  "Political Pluralism\nCommitment to elections & civil liberties"            = 15,
+  "Minority Rights\nMajority override of minority rights"                    = 17,
+  "Rejection of Violence\nDiscourages political violence"                    = 18
 )
 
 # ── Plot ─────────────────────────────────────────────────────────────────────
-p <- ggplot(long, aes(x = year, y = est, colour = component, fill = component)) +
+p <- ggplot(long, aes(x = year, y = est, colour = component, fill = component,
+                      linetype = component, shape = component)) +
   geom_hline(yintercept = 0, linetype = "dashed", colour = "grey50", linewidth = 0.5) +
   geom_ribbon(aes(ymin = lo, ymax = hi), alpha = 0.15, colour = NA) +
   geom_line(linewidth = 1.0) +
   geom_point(size = 2.5) +
-  scale_colour_manual(values = panel_colors, guide = "none") +
-  scale_fill_manual(values = panel_colors,   guide = "none") +
+  scale_colour_manual(values = panel_colors,    guide = "none") +
+  scale_fill_manual(values = panel_colors,      guide = "none") +
+  scale_linetype_manual(values = panel_linetypes, guide = "none") +
+  scale_shape_manual(values = panel_shapes,     guide = "none") +
   scale_x_continuous(breaks = seq(1975, 2020, by = 10)) +
   facet_wrap(~ component, ncol = 2, scales = "free_y") +
   labs(
@@ -86,9 +103,9 @@ p <- ggplot(long, aes(x = year, y = est, colour = component, fill = component)) 
     plot.margin      = margin(10, 15, 5, 10)
   )
 
-ggsave("israel_analysis_output/fig_apo_likud_clean.pdf",
+ggsave("israel_analysis_output/fig_apo_likud_grey.pdf",
        p, width = 13, height = 8, units = "in")
-ggsave("israel_analysis_output/fig_apo_likud_clean_r.png",
+ggsave("israel_analysis_output/fig_apo_likud_grey_r.png",
        p, width = 13, height = 8, units = "in", dpi = 160)
 
-message("Saved fig_apo_likud_clean.pdf and fig_apo_likud_clean_r.png")
+message("Saved fig_apo_likud_grey.pdf and fig_apo_likud_grey_r.png")
