@@ -86,7 +86,7 @@ p <- ggplot(long, aes(x = year, y = est, colour = component, fill = component,
   scale_fill_manual(values = panel_colors,      guide = "none") +
   scale_linetype_manual(values = panel_linetypes, guide = "none") +
   scale_shape_manual(values = panel_shapes,     guide = "none") +
-  scale_x_continuous(breaks = seq(1975, 2020, by = 10)) +
+  scale_x_continuous(limits = c(2009, 2020), breaks = c(2009, 2013, 2015, 2019)) +
   facet_wrap(~ component, ncol = 2, scales = "free_y") +
   labs(
     x       = "Election year",
