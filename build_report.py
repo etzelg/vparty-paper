@@ -250,9 +250,10 @@ add_body(doc,
 doc.add_heading("4.1 Multi-Source Corruption Trends", level=2)
 
 add_body(doc,
-    "Figure 5 overlays three normalised corruption indicators (TI CPI, World Bank CCE, "
-    "and V-Dem Executive Corruption), standardised to a common 0–1 scale where higher "
-    "values indicate worse perceived corruption. All three sources agree on the direction:")
+    "Figure 5 overlays two independent, corruption-specific indicators (TI CPI and World Bank "
+    "Control of Corruption), normalised to a common 0–1 scale where higher values indicate "
+    "better governance (less corruption). For both measures, a declining trend means worsening "
+    "corruption. Both sources agree on the direction:")
 
 add_bullet(doc, "Israel scores in the top decile globally on corruption control through the "
                 "late 1990s and 2000s — broadly consistent with its OECD peers.")
@@ -266,8 +267,8 @@ add_bullet(doc, "The World Bank CCE — the most smoothed of the three — shows
                 "source drives the result.")
 
 add_figure(doc, "fig17_corruption_normalised_combined.png",
-           "Figure 5 — Normalised corruption indicators from three independent sources (higher = worse). "
-           "Shaded bands indicate periods of right-bloc government.")
+           "Figure 5 — TI CPI and World Bank Control of Corruption, normalised 0–1 (higher = cleaner / less corrupt). "
+           "Declining lines indicate worsening governance. Shaded bands = right-wing governments.")
 
 doc.add_heading("4.2 Interpretation", level=2)
 
